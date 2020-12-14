@@ -13,17 +13,16 @@ namespace S2_ZS
 {
     public partial class Form1 : Form
     {
-        string connectionstring = @"Data Source=PK306-9\MSSQLSERVER1;Initial Catalog=drivers;Integrated Security=True";
-        string connectionstring1 = @"Data Source=PK306-9\MSSQLSERVER1;Initial Catalog=za_s2;Integrated Security=True";
+        string connectionstring = @"Data Source=DESKTOP-HHT7APO;Integrated Security=SSPI;Initial Catalog=drivers1";
+        string connectionstring1 = @"Data Source=DESKTOP-HHT7APO;Integrated Security=SSPI;Initial Catalog=data";
         public Form1()
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(connectionstring);
-            string query = "update Drivers1 set ";
+            string query = "update Drivers set ";
             if(textBox1.Text != "")
             {
                 query += "name = '"+textBox1.Text+"',";
@@ -105,7 +104,7 @@ namespace S2_ZS
                 MessageBox.Show("Ok!");
             }
 
-            string sql = "Select * from Drivers1";
+            string sql = "Select * from Drivers";
             SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
             // Создаем объект Dataset
             DataSet ds = new DataSet();
@@ -167,7 +166,7 @@ namespace S2_ZS
         {
             SqlConnection conn = new SqlConnection(connectionstring);
             conn.Open();
-            string sql = "Select * from Drivers1";
+            string sql = "Select * from Drivers";
             SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
             // Создаем объект Dataset
             DataSet ds = new DataSet();
@@ -187,6 +186,11 @@ namespace S2_ZS
         {
             Form2 f2 = new Form2();
             f2.Show();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
